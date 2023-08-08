@@ -6,9 +6,11 @@ conn = sqlite3.connect('city_hospitals.db')
 # details = conn.execute("pragma table_info('doctor_details')")
 # print(details)
 # for i in details:
-#     print(i)
+print("\n\n")
 
-print("********************Doctor Details*********************")
+print("********************Doctor Details*********************\n")
+
+
 res = conn.execute("SELECT * FROM doctor_details")
 for i in res:
     print(i)
@@ -18,8 +20,10 @@ for i in res:
 # print(details)
 # for i in details:
 #     print(i)
+print("\n")
+print("********************Patients Details*********************\n")
 
-print("********************Patients Details*********************")
+
 res = conn.execute("SELECT * FROM patient_detail")
 for i in res:
     print(i)
@@ -29,8 +33,10 @@ for i in res:
 # for i in details:
 #     print(i)
 
+print("\n")
+print("********************Nurse Details*********************\n")
 
-print("********************Nurse Details*********************")
+
 res = conn.execute("SELECT * FROM nurse_details")
 for i in res:
     print(i)
@@ -39,8 +45,10 @@ for i in res:
 # print(details)
 # for i in details:
 #     print(i)
+print("\n")
+print("********************Other Staff Details*********************\n")
 
-print("********************Other Staff Details*********************")
+
 res = conn.execute("SELECT * FROM other_workers_details")
 for i in res:
     print(i)
@@ -50,8 +58,10 @@ for i in res:
 # print(details)
 # for i in details:
 #     print(i)
+print("\n")
+print("********************User Details*********************\n")
 
-print("********************User Details*********************")
+
 res = conn.execute("SELECT * FROM user_data")
 for i in res:
     print(i)
@@ -62,8 +72,10 @@ for i in res:
 # print(details)
 # for i in details:
 #     print(i)
+print("\n")
+print("********************Doctor Assigned Details*********************\n")
 
-print("********************Doctor Assigned Details*********************")
+
 res = conn.execute("SELECT * FROM assigned_patients")
 for i in res:
     print(i)

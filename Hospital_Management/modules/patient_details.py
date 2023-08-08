@@ -9,6 +9,7 @@ def patient_details(conn,cursor):
     patient_choice = int(input("Enter your choice: "))
 
     if patient_choice == 1:
+        print("THE PATIENTS LIST:\n")
         cursor.execute("SELECT * FROM patient_detail")
         rows = cursor.fetchall()
         for row in rows:
@@ -50,6 +51,6 @@ def patient_details(conn,cursor):
 def assign_patient_to_doctor(conn, cursor, patient_name, doctor_name):
     cursor.execute("INSERT INTO assigned_patients (patient_name, doctor_name) VALUES (?, ?)", (patient_name, doctor_name))
     conn.commit()
-    print(f"Patient '{patient_name}' has been assigned to Dr. {doctor_name}.")
+    print(f"Patient '{patient_name}' has been assigned to Dr. '{doctor_name}'.")
     cursor.execute("UPDATE patient_detail SET assigned_doctor = ? WHERE name = ?", (doctor_name, patient_name))
     conn.commit()

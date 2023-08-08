@@ -17,18 +17,21 @@ def administration(conn,cursor):
 
         details_choice = int(input("Enter your Choice: "))
         if details_choice == 1:
+            print("THE DOCTORS AVAILABLE ARE:\n")
             cursor.execute("SELECT * FROM doctor_details")
             rows = cursor.fetchall()
             for row in rows:
                 name, specialisation, age, address, contact, fees, monthly_salary = row
                 print(f"Name: {name}, Specialisation: {specialisation}, Age: {age}, Address: {address}, Contact: {contact}, Fees: {fees}, Monthly Salary: {monthly_salary}")
         elif details_choice == 2:
+            print("THE NURSES AVAILABLE ARE:\n")
             cursor.execute("SELECT * FROM nurse_details")
             rows = cursor.fetchall()
             for row in rows:
                 name, age, address, contact, monthly_salary = row
                 print(f"Name: {name}, Age: {age}, Address: {address}, Contact: {contact}, Monthly Salary: {monthly_salary}")
         elif details_choice == 3:
+            print("THE STAFF AVAILABLE ARE:\n")
             cursor.execute("SELECT * FROM other_workers_details")
             rows = cursor.fetchall()
             for row in rows:
