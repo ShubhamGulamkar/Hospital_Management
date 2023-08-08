@@ -1,7 +1,7 @@
 import sqlite3
 
 # Establish a connection to the database
-conn = sqlite3.connect('city_hospitals.db')
+conn = sqlite3.connect('../database/city_hospitals.db')
 
 # details = conn.execute("pragma table_info('doctor_details')")
 # print(details)

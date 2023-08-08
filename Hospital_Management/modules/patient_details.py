@@ -2,7 +2,7 @@ def patient_details(conn,cursor):
     print("""
         1. Show Patients Info
         2. Add New Patient
-        3. Discharge Summary
+        3. Discharge the patient
         4. Exit
     """)
 
