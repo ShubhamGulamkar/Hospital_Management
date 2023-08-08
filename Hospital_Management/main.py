@@ -3,18 +3,20 @@ import sqlite3
 from Hospital_Management.modules.administration import administration
 from Hospital_Management.modules.patient_details import patient_details
 from Hospital_Management.modules.user_management import registration, signin
-
+# from Hospital_Management.modules.patient_details import assign_patient_to_doctor
 
 def create_tables(cursor):
         cursor.execute('''
-        CREATE TABLE IF NOT EXISTS patient_detail (
-            name TEXT PRIMARY KEY,
-            sex TEXT,
-            age INTEGER,
-            address TEXT,
-            contact TEXT
-        )
-        ''')
+            CREATE TABLE IF NOT EXISTS patient_detail (
+                name TEXT PRIMARY KEY,
+                sex TEXT,
+                age INTEGER,
+                address TEXT,
+                contact TEXT,
+                disease TEXT,
+                assigned_doctor TEXT
+            )
+            ''')
 
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS doctor_details (
@@ -55,6 +57,15 @@ def create_tables(cursor):
         )
         ''')
 
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS assigned_patients (
+                patient_name TEXT,
+                doctor_name TEXT,
+                FOREIGN KEY (patient_name) REFERENCES patient_detail(name),
+                FOREIGN KEY (doctor_name) REFERENCES doctor_details(name)
+            )
+            ''')
+
 
 def main():
     if not os.path.exists('database'):
@@ -89,10 +100,10 @@ def main():
                     action = int(input("Enter your choice: "))
 
                     if action == 1:
-                        administration(cursor)
+                        administration(conn, cursor)
 
                     elif action == 2:
-                        patient_details(cursor)
+                        patient_details(conn, cursor)
 
                     elif action == 3:
                         break

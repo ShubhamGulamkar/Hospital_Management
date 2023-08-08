@@ -1,4 +1,4 @@
-def administration(cursor):
+def administration(conn,cursor):
     print("""
         1. Display the details
         2. Add a new member
@@ -45,7 +45,7 @@ def administration(cursor):
         add_choice = int(input("Enter your Choice: "))
         if add_choice == 1:
             name = input("Enter the doctor's name: ")
-            specialisation = input("Enter the specialization: ")
+            specialisation = input("Enter the specialization of Doctor: ")
             age = int(input("Enter the age: "))
             address = input("Enter the address: ")
             contact = input("Enter Contact Details: ")
@@ -53,6 +53,7 @@ def administration(cursor):
             monthly_salary = int(input("Enter Monthly Salary: "))
             cursor.execute("INSERT INTO doctor_details VALUES (?, ?, ?, ?, ?, ?, ?)",
                            (name, specialisation, age, address, contact, fees, monthly_salary))
+            conn.commit()
             print("Successfully added doctor details.")
         elif add_choice == 2:
             name = input("Enter Nurse name: ")
@@ -62,6 +63,7 @@ def administration(cursor):
             monthly_salary = int(input("Enter Monthly Salary: "))
             cursor.execute("INSERT INTO nurse_details VALUES (?, ?, ?, ?, ?)",
                            (name, age, address, contact, monthly_salary))
+            conn.commit()
             print("Successfully added nurse details.")
         elif add_choice == 3:
             name = input("Enter worker name: ")
@@ -71,6 +73,7 @@ def administration(cursor):
             monthly_salary = int(input("Enter Monthly Salary: "))
             cursor.execute("INSERT INTO other_workers_details VALUES (?, ?, ?, ?, ?)",
                            (name, age, address, contact, monthly_salary))
+            conn.commit()
             print("Successfully added worker details.")
 
     elif admin_choice == 3:
